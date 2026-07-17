@@ -4,14 +4,39 @@ public class EnemySphere : MonoBehaviour
 {
     [Header("Настройки врага")]
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float enemySize = 5f;
+    
+    [Header("Компоненты")]
+    [SerializeField] private GameObject sprite;
     
     private Transform player;
-    private float fixedY; // Запоминаем начальную высоту
+    private float fixedY;
 
     void Start()
     {
         // Запоминаем начальную позицию по Y
         fixedY = transform.position.y;
+        
+        // Если sprite не назначен, ищем его в дочерних объектах
+        if (sprite == null)
+        {
+            // Ищем SpriteRenderer в дочерних объектах
+            SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer>();
+            if (renderer != null)
+            {
+                sprite = renderer.gameObject;
+                Debug.Log("Спрайт найден автоматически: " + sprite.name);
+            }
+            else
+            {
+                Debug.LogError("Не найден SpriteRenderer ни на объекте, ни на его детях! Добавьте компонент SpriteRenderer.");
+                enabled = false;
+                return;
+            }
+        }
+        
+        // Применяем размер
+        sprite.transform.localScale = new Vector3(enemySize, enemySize, enemySize);
         
         // Поиск игрока
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");

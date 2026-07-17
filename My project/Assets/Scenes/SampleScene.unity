@@ -706,6 +706,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.4
+  enemySize: 1.2
+  sprite: {fileID: 1095741902}
 --- !u!135 &1095741904
 SphereCollider:
   m_ObjectHideFlags: 0
