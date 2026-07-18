@@ -3,7 +3,6 @@ using UnityEngine;
 public class CubeMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
-    
     private Vector3 targetDirection = Vector3.zero;
     private bool isMoving = false;
     private bool isFirstPress = true;
