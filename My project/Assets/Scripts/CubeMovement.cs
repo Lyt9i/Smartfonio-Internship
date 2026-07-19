@@ -6,7 +6,16 @@ public class CubeMovement : MonoBehaviour
     private Vector3 targetDirection = Vector3.zero;
     private bool isMoving = false;
     private bool isFirstPress = true;
+    private Animator modelAnimator;
 
+    void Start()
+    {
+        modelAnimator = GetComponentInChildren<Animator>();
+        if (modelAnimator == null)
+        {
+            Debug.LogError("Animator not found in children of " + gameObject.name);
+        }
+    }
     void Update()
     {
         HandleRotation();
@@ -30,12 +39,20 @@ public class CubeMovement : MonoBehaviour
                 targetDirection = inputDirection;
                 transform.rotation = Quaternion.LookRotation(targetDirection);
                 isMoving = false; // Сбрасываем движение
+                if(modelAnimator != null)    
+                {
+                    modelAnimator.SetBool("isMoving", isMoving);
+                }
                 isFirstPress = true;
             }
             else if (isFirstPress)
             {
                 // Если нажали ту же клавишу - разрешаем движение
                 isMoving = true;
+                if(modelAnimator != null)
+                {
+                    modelAnimator.SetBool("isMoving", isMoving);
+                }
                 isFirstPress = false;
             }
         }
@@ -43,6 +60,10 @@ public class CubeMovement : MonoBehaviour
         {
             // Если отпустили клавиши - останавливаем движение
             isMoving = false;
+            if(modelAnimator != null)
+            {
+                modelAnimator.SetBool("isMoving", isMoving);
+            }
             isFirstPress = true;
         }
     }

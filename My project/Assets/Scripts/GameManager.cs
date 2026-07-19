@@ -1,0 +1,23 @@
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+    [Header("Настройки игрока")]
+    [SerializeField]private int score = 0;
+    [SerializeField]private int lives = 3;
+    [SerializeField]private int health = 3;
+    [SerializeField]private bool isPlayerMoving = false;
+    
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
