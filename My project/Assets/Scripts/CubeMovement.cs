@@ -7,7 +7,7 @@ public class CubeMovement : MonoBehaviour
     private bool isMoving = false;
     private bool isFirstPress = true;
     private Animator modelAnimator;
-
+    //авы
     void Start()
     {
         modelAnimator = GetComponentInChildren<Animator>();
