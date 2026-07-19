@@ -77,4 +77,10 @@ public class CubeMovement : MonoBehaviour
             transform.Translate(targetDirection * moveSpeed * Time.deltaTime, Space.World);
         }
     }
+    public void OnCheeseCollected()
+    {
+        moveSpeed += 1f; // Увеличиваем скорость при сборе сыра
+        Debug.Log("Сообщение получено: OnCheeseCollected. Скорость увеличена до: " + moveSpeed);
+        // Например, увеличить счет игрока или вызвать метод в GameManager
+    }
 }

@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]private int score = 0;
     [SerializeField]private int lives = 3;
     [SerializeField]private int health = 3;
-    [SerializeField]private bool isPlayerMoving = false;
     
     void Start()
     {

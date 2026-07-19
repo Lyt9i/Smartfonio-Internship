@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CheeseContact : MonoBehaviour
@@ -7,9 +8,10 @@ public class CheeseContact : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Handle cheese collection logic here
+            other.gameObject.SendMessage("OnCheeseCollected", SendMessageOptions.DontRequireReceiver);
             Debug.Log("Cheese collected!");
-            Destroy(gameObject); // Remove the cheese from the scene
+            Debug.Log(" Сообщение отправлено в CubeMovement: OnCheeseCollected");
+            Destroy(gameObject); 
         }
     }
 }
