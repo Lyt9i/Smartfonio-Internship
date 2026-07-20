@@ -1203,7 +1203,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 933474068515863978, guid: c2bc67f82bf50b345bd239d49e11aa30, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.999
+      value: -1.712
       objectReference: {fileID: 0}
     - target: {fileID: 933474068515863978, guid: c2bc67f82bf50b345bd239d49e11aa30, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1211,7 +1211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 933474068515863978, guid: c2bc67f82bf50b345bd239d49e11aa30, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.135
+      value: -1.767
       objectReference: {fileID: 0}
     - target: {fileID: 933474068515863978, guid: c2bc67f82bf50b345bd239d49e11aa30, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1366,6 +1366,10 @@ PrefabInstance:
     - target: {fileID: 4525741679879347743, guid: 926c110dab5fc354ca8fd9a57ef6a4d0, type: 3}
       propertyPath: m_Name
       value: MainBastard
+      objectReference: {fileID: 0}
+    - target: {fileID: 7989319550202183287, guid: 926c110dab5fc354ca8fd9a57ef6a4d0, type: 3}
+      propertyPath: enemySize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
