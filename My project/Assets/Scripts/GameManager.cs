@@ -1,3 +1,5 @@
+using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,21 +11,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]private int score = 0;
     [SerializeField]private int health = 3;
     [SerializeField]private int cheese = 3;
-    private Text liveTrackerText;
+    [SerializeField] public TMP_Text liveTrackerText;
+    [SerializeField] public TMP_Text cheeseTrackerText;
+    [SerializeField] public Animator animator;
+
     void Start()
     {
-        // Автоматически находим LiveTracker
-        GameObject liveTrackerObj = GameObject.Find("LiveTracker");
-        if (liveTrackerObj != null)
-        {
-            liveTrackerText = liveTrackerObj.GetComponent<Text>();
-            if (liveTrackerText == null)
-            {
-                liveTrackerText = liveTrackerObj.GetComponentInChildren<Text>();
-            }
-        }
-        
-        UpdateUI();
+        UpdateLiveUI();
+        UpdateCheeseUI();
     }
     public void TakeDamage(int damage)
     {
@@ -35,14 +30,34 @@ public class GameManager : MonoBehaviour
             Debug.Log("Игра окончена!");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        UpdateLiveUI();
     }
-    private void UpdateUI()
+    private void UpdateLiveUI()
     {
         if (liveTrackerText != null)
         {
-            liveTrackerText.text = $"Жизни: {health}";
+            liveTrackerText.text = $"Жизней осталось: {health}";
         }
     }
+    private void UpdateCheeseUI()
+    {
+        if (cheeseTrackerText != null)
+        {
+            cheeseTrackerText.text = $"Сыра осталось собрать: {cheese}";
+        }
+    }
+    public void CollectCheese()
+    {
+        cheese -= 1;
+        Debug.Log("Собрано сыра: " + cheese);
+        UpdateCheeseUI();
+        if (cheese <= 0)
+        {
+            Debug.Log("Вы собрали весь сыр!");
+            animator.SetBool("AllCheeseColected",true);
+        }
+    }
+
 
 
 }
