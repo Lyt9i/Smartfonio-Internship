@@ -50,8 +50,10 @@ public class GameManager : MonoBehaviour
     public void CollectCheese()
     {
         cheese -= 1;
+        health += 1;
         Debug.Log("Собрано сыра: " + cheese);
         UpdateCheeseUI();
+        UpdateLiveUI();
         if (cheese <= 0)
         {
             Debug.Log("Вы собрали весь сыр!");
