@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CheeseContact : MonoBehaviour
 {
+    // Проверка
     // Update is called once per frame
     void OnTriggerEnter(Collider other)
     {
