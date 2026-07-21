@@ -3,6 +3,7 @@ using UnityEngine;
 public class CubeMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private GameObject GameManagerObject; // Ссылка на объект GameManager
     private Vector3 targetDirection = Vector3.zero;
     private bool isMoving = false;
     private bool isFirstPress = true;
@@ -83,5 +84,20 @@ public class CubeMovement : MonoBehaviour
         moveSpeed += 1f; // Увеличиваем скорость при сборе сыра
         Debug.Log("Сообщение получено: OnCheeseCollected. Скорость увеличена до: " + moveSpeed);
         // Например, увеличить счет игрока или вызвать метод в GameManager
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Finish"))
+        {
+            GameManager gameManager = GameManagerObject.GetComponent<GameManager>();
+            if (gameManager != null)
+            {
+                gameManager.endGame();
+            }
+            else
+            {
+                Debug.LogError("GameManager component not found on GameManagerObject.");
+            }
+        }
     }
 }

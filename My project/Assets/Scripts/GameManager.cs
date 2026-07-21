@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TMP_Text liveTrackerText;
     [SerializeField] public TMP_Text cheeseTrackerText;
     [SerializeField] public Animator animator;
+    [SerializeField] public GameObject loseGameCanvas;
+    [SerializeField] public GameObject endGameCanvas;
 
     void Start()
     {
@@ -27,8 +29,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Здоровье игрока: " + health);
         if (health <= 0)
         {
-            Debug.Log("Игра окончена!");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            loseGame();
         }
         UpdateLiveUI();
     }
@@ -57,7 +58,42 @@ public class GameManager : MonoBehaviour
             animator.SetBool("AllCheeseColected",true);
         }
     }
+    public void ResetGame()
+    {
+        Debug.Log("Игра окончена!");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
+    public void GoMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void loseGame()
+    {
+        Time.timeScale = 0f;
+        if (loseGameCanvas != null)
+        {
+            loseGameCanvas.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("Канвас не найден!");
+        }
+    }
+    public void endGame()
+    {
+        Time.timeScale = 0f;
+        if (endGameCanvas != null)
+        {
+            endGameCanvas.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("Канвас не найден!");
+        }
+    }
 
 
 }
